@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper">
-    <Header />
-    <nuxt />
-    <ColorModePicker />
+  <div>
+    <AppHeader title=" Nuxt 3 - Netlify CMS (Decap) - Tailwind css " />
+    <slot />
+    <AppFooter />
   </div>
 </template>
