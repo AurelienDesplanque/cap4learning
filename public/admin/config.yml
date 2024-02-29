@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: AurelienDesplanque/cap4learning # Branch to update (optional; defaults to master)
+  repo: AurelienDesplanque/ntn-boilerplate # Path to your GitHub repository
 
 publish_mode: editorial_workflow
 
