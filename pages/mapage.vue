@@ -1,16 +1,22 @@
 <template>
     <div>
-        <li v-for="post of posts" :key="post.slug">
-            <NuxtLink :to="post.slug">{{ post.title }}</NuxtLink>
-        </li>
+        <h1>Deep Learning Posts</h1>
+        <ul>
+            <li v-for="post in posts" :key="post.slug">
+                <nuxt-link :to="`/blog/${post.slug}`">{{
+                    post.title
+                }}</nuxt-link>
+            </li>
+        </ul>
     </div>
 </template>
   
 <script>
 export default {
     async asyncData({ $content }) {
+        console.log("Fetching posts...");
         const posts = await $content("blog").fetch();
-
+        console.log("Posts:", posts);
         return {
             posts,
         };
