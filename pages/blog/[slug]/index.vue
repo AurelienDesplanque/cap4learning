@@ -8,5 +8,6 @@ const post = await queryContent(`/blog/${slug}`).findOne();
     <v-container>
         <h2 class="mb-4">{{ post.title }}</h2>
         <ContentRenderer :value="post" />
+        <br />
     </v-container>
 </template>
