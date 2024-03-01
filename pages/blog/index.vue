@@ -5,9 +5,11 @@ const posts = await queryContent("/blog/").sort({ date: -1 }).find();
     <v-container>
         <v-list>
             <v-list-item class="mb-2" v-for="post of posts">
-                <NuxtLink :to="post._path">
-                    {{ post.title }}
-                </NuxtLink>
+                <h1>
+                    <NuxtLink :to="post._path">
+                        {{ post.title }}
+                    </NuxtLink>
+                </h1>
             </v-list-item>
         </v-list>
     </v-container>
