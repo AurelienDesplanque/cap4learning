@@ -12,6 +12,7 @@ collections:
     label: "Blog"
     label_singular: "Post"
     folder: "content/blog"
+    format: "frontmatter"
     create: true
     fields:
       - {
