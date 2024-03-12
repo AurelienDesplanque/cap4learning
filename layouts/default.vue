@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <AppHeader title=" Nuxt 3 - Netlify CMS (Decap) - Tailwind css " />
-    <slot />
-    <AppFooter />
-  </div>
+  <v-app>
+    <Header></Header>
+    <v-main>
+      <slot />
+    </v-main>
+  </v-app>
 </template>
