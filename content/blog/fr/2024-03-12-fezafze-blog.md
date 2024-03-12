@@ -1,3 +1,0 @@
----
-training: formation enn
----
