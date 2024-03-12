@@ -1,0 +1,170 @@
+# when using the default proxy server port
+local_backend: true
+
+publish_mode: editorial_workflow
+
+backend:
+  name: git-gateway
+  repo: AurelienDesplanque/cap4learning # Path to your GitHub repository
+  commit_messages:
+    create: "Blog creation ({{slug}})"
+    update: "Update blog ({{slug}})"
+    delete: "Blog deleted ({{slug}})"
+    uploadMedia: "Upload media ({{path}})"
+    deleteMedia: "Delete media {{path}}"
+    openAuthoring: "{{message}}"
+
+
+
+
+media_folder: public/img
+public_folder: /img
+
+# Blog collection
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    i18n: true
+    folder: 'content/blog'
+    format: 'frontmatter'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      #  Title
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      # Creation Date
+      - { label: 'Creation Date', name: 'created_at', widget: 'datetime', required: false, default: 'now' }
+      # Updated Date
+      - { label: 'Updated Date', name: 'updated_at', widget: 'datetime', required: false, default: 'now' }
+      # Short Description
+      - { label: 'Short Description', name: 'short_description', widget: 'text', required: true }
+      # Long Description
+      - { label: 'Long Description', name: 'long_description', widget: 'markdown', required: true }
+      # Featured Image
+      - { label: 'Featured Image', name: 'featured_image', widget: 'image', required: false }
+      # Training
+      - { label: 'Training', name: 'training', widget: 'relation', collection: 'training', value_field: 'title', search_fields: ['title'], required: false }
+
+  # Training collection
+  - name: 'training'
+    label: 'Training'
+    folder: 'content/training'
+    format: 'frontmatter'
+    create: true
+    slug: '{{slug}}'
+<<<<<<< HEAD
+    i18n: true
+    fields:
+      # Title
+      - { label: 'Title', name: 'title', widget: 'string', i18n: true, required: true}
+=======
+    fields:
+
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Creation Date', name: 'created_at', widget: 'datetime', required: false, default: 'now' }
+      - { label: 'Updated Date', name: 'updated_at', widget: 'datetime', required: false, default: 'now' }
+      - { label: 'Featured Image', name: 'featured_image', widget: 'image', required: false }
+      - { label: 'Category', name: 'category', widget: 'relation', collection: 'category', value_field: 'title', search_fields: ['title'], required: true}
+      - { label: 'Eligible CPF', name: 'eligible_cpf', widget: 'boolean'}
+      - { label: 'Price inter', name: 'price_inter', widget: 'number', value_type: "float", required: false}
+      - { label: 'Price intra', name: 'price_intra', widget: 'number', value_type: "float", required: false}
+      - { label: 'Next date', name: 'next_date', widget: 'datetime', required: false}
+      - { label: 'Weight', name: 'weight', widget: 'number', required: false}
+      - { label: 'Day duration', name: 'duration_day', value_type: "int", widget: 'number', required: true}
+      - { label: 'Hour duration', name: 'duration_hour', value_type: "int", widget: 'number', required: true}
+      - { label: 'Trainee number minimum', name: 'trainee_number_min', value_type: "int", widget: 'number', default: 0}
+      - { label: 'Trainee number maximum', name: 'trainee_number_max', value_type: "int", widget: 'number', required: true}
+
+      - { label: 'Short Description', name: 'short_description', widget: 'text', required: true }
+      - { label: 'Long Description', name: 'long_description', widget: 'markdown', required: true }
+      - { label: 'Requirements', name: 'requirements', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: true }
+      - { label: 'Covered skills', name: 'covered_skills', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: true }
+      - { label: 'Audience', name: 'audience', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: true }
+      - { label: 'Goals', name: 'goals', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: true }
+      - { label: 'Methods', name: 'methods', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: true }
+      - { label: 'Achievement', name: 'achieveemnt', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: true }
+      - { label: 'Trainer', name: 'trainer', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: true }
+      - { label: 'Metas', name: 'metas', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], required: false }
+>>>>>>> parent of 7c5c66f (ajout langue)
+
+      # Category with titleId of the category
+      - { label: 'Category', name: 'category', widget: 'relation', collection: 'category', value_field: '{{slug}}', search_fields: ['title'], required: true}
+      # Image
+      - { label: 'Featured Image', name: 'featured_image', widget: 'image', i18n: duplicate, required: true }
+      # Short description
+      - { label: 'Short Description', name: 'short_description', widget: 'text', i18n: true , required: true }
+      # Long description
+      - { label: 'Long Description', name: 'long_description', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true  , required: true}
+      # Requirements
+      - { label: 'Requirements', name: 'requirements', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true , required: true }
+      # Covered skills
+      - { label: 'Covered skills', name: 'covered_skills', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true  , required: true}
+      # Audience
+      - { label: 'Audience', name: 'audience', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true  , required: true}
+      # Goals
+      - { label: 'Goals', name: 'goals', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true  , required: true}
+      # Methods
+      - { label: 'Methods', name: 'methods', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true  , required: true}
+      # Achievement
+      - { label: 'Achievement', name: 'achieveemnt', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true  , required: true}
+      # Trainer
+      - { label: 'Trainer', name: 'trainer', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true, required: true}
+      # Metas
+      - { label: 'Metas', name: 'metas', widget: 'markdown', editor_components: [],  buttons: ['bulleted-list', 'numbered-list', 'link'], i18n: true, required: false}
+      # CPF eligibility
+      - { label: 'Eligible CPF', name: 'eligible_cpf', widget: 'boolean', i18n: duplicate, required: false}
+      # Trainee number minimum
+      - { label: 'Trainee number minimum', name: 'trainee_number_min', value_type: "int", widget: 'number', i18n: duplicate, default: 0, required: false}
+      # Trainee number maximum
+      - { label: 'Trainee number maximum', name: 'trainee_number_max', value_type: "int", widget: 'number', i18n: duplicate, required: false}
+      # Day duration
+      - { label: 'Day duration', name: 'duration_day', value_type: "int", widget: 'number', i18n: duplicate, required: true}
+      # Hour duration
+      - { label: 'Hour duration', name: 'duration_hour', value_type: "int", widget: 'number', i18n: duplicate, required: true}
+      # Price inter
+      - { label: 'Price inter', name: 'price_inter', widget: 'number', value_type: "float", i18n: duplicate, required: true}
+      # Price intra
+      - { label: 'Price intra', name: 'price_intra', widget: 'number', value_type: "float", i18n: duplicate, required: true}
+      # Weight
+      - { label: 'Weight', name: 'weight', widget: 'number', i18n: duplicate, required: false}
+      # Creation Date
+      - { label: 'Creation Date', name: 'created_at', widget: 'datetime', i18n: duplicate, required: false, default: 'now' }
+      # Updated Date
+      - { label: 'Updated Date', name: 'updated_at', widget: 'datetime', i18n: duplicate, required: false, default: 'now'}
+
+  - name: 'category'
+    label: 'Category'
+    i18n: true
+    folder: 'content/category'
+    format: 'frontmatter'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true, i18n: true }
+      
+      - { label: 'Description', name: 'description', widget: 'string', required: false, i18n: duplicate}
+
+  - name: 'session'
+    label: 'Session'
+    folder: 'content/session'
+    format: 'frontmatter'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+    # Title
+      - { label: 'Title', name: 'title', widget: 'string', required: false}
+
+    # Training
+      - { label: 'Training', name: 'training', widget: 'relation', collection: 'training', value_field: 'title', search_fields: ['title'], required: true }
+    # Online 
+      - { label: 'Online', name: 'online', widget: 'boolean', required: false}
+    # Date
+      - { label: 'Date', name: 'date_session', widget: 'datetime', required: true}
+    # Language
+      - { label: 'Language', name: 'language', widget: 'select', options: ['en', 'fr'], required: true }
+
+
+i18n:
+  structure: multiple_folders
+  locales: [en, fr]
+  default_locale: en
